@@ -1,0 +1,101 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	
+	<title>
+		User
+	</title>
+	<head>
+		
+		<style>
+			body{
+  background-color: #aeaeae;
+}
+.loginMenu{
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding:  70px 85px;
+  text-align: center;
+  border-radius: 2rem;
+}
+.form input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border-redius: 12px;
+  margin: 0 0 15px;
+  padding:  7px 55px;
+    box-sizing: border-box;
+  font-size: 18px;
+}
+.form button {
+  text-transform: uppercase;
+  outline: 0;
+  background: black;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form button:hover,
+.form button:active,
+.form button:focus {
+  background: #595959;
+  transition: 0.5s;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 22px;
+}
+.form .message a {
+  color: #696969;
+  text-decoration: none;
+}
+.form .registerForm {
+  display: none;
+}
+
+
+		</style>
+	</head>
+	<body>
+		<div class="loginMenu">
+			
+						<p th:text="${msg}"></p>
+
+  <div class="form">
+ <!--   <form class="registerForm">
+      <input type="text" placeholder="username"/>
+      <input type="password" placeholder="password"/>
+      <input type="mail" placeholder="email adress"/>
+      <button>Login</button>
+      <p class="message">Do you have an account? <a href="userreg">Sign In</a></p>
+    </form>-->
+   <form class="loginForm" action="/ulogin" method="post">
+      <input type="text" name="email" placeholder="username"/>
+      <input type="password" name="pass" placeholder="password"/>
+      <button>Login</button>
+      <p class="message">Don't you have an account? <a href="userreg">Create an account</a></p>
+    </form>
+  </div>
+</div>
+		
+		<script>
+			$('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+			
+		</script>
+	</body>
+</html>

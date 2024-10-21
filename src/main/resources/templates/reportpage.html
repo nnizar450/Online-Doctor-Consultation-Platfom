@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		
+		
+		<style>
+			body{
+  margin: 25px;
+  font-family: verdana;
+}
+
+h1{
+  color: darkslategray;
+}
+
+p {
+  font-size: 12pt;
+  color: black;
+}
+canvas {
+  height: 175px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+
+input {
+  font-family: verdana;
+  font-size: 12pt;
+}
+
+body{
+	background-color: azure;
+	
+}
+input[type="submit"] {
+    background-color: #007bff; /* Background color */
+    color: #fff; /* Text color */
+    padding: 10px 20px; /* Padding */
+    border: none; /* Border */
+    cursor: pointer; /* Mouse cursor style */
+    /* Add more styles as needed */
+}
+
+
+		</style>
+		
+		
+	</head>
+<body>
+<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
+</script>
+<h1>Upload Report</h1>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+<canvas id= "canv1" ></canvas>
+
+<p>
+Filename:
+<input type="file" multiple="false" name="file" accept="image/*" id=finput onchange="upload()">
+</p>
+
+<label>Write About Patient Health</label>
+<textarea name="phealth"></textarea>
+
+<input type="submit" >
+
+</form>
+<script>
+	
+	function upload(){
+  var imgcanvas = document.getElementById("canv1");
+  var fileinput = document.getElementById("finput");
+  var image = new SimpleImage(fileinput);
+  image.drawTo(imgcanvas);
+}
+
+</script>
+</body>
+</html>

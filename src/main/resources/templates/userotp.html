@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Add your other head elements -->
+    <script th:inline="javascript">
+        /*<![CDATA[*/ 
+        // Access the model attribute
+        var otp = /*[[${otp}]]*/ '';
+
+        // Prompt the user for input
+        var enteredOTP = prompt('Enter OTP');
+
+        // Verify the entered OTP
+        if (enteredOTP === otp) {
+            // Redirect or perform desired action
+            window.location.href = '/userview';
+        } else {
+            // Handle incorrect OTP
+            alert('Incorrect OTP');
+            // Redirect or perform desired action
+            // window.location.href = '/some-other-page';
+        }
+        /*]]>*/
+    </script>
+</head>
+<body>
+    <!-- Your HTML content -->
+</body>
+</html>

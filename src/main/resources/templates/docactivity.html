@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<style>
+		 fieldset {
+            background-color: azure;
+            width: 500px; /* Set the width as per your requirement */
+            height: 400px; /* Set the height as per your requirement */
+            position: initial;
+            margin:100px 500px;
+        }
+        input{
+			
+			padding:10px 20px;
+		}
+		img{
+			
+			margin:0px 150px;
+		}
+		</style>
+	</head>
+<body>
+
+
+<h1>Docter Status</h1>
+
+<form action="/action_page.php">
+ <fieldset>
+ 
+  
+  <th:block th:each="docact : ${doc}">
+	  <div>
+		  	<img th:src="@{'/images/' + ${docact.image}}" width="180" height="150" alt="docter License"/> 
+	  </div>
+	  <br>
+    <p>
+      <label for="intime">Doctor In Time    :</label>
+      <input type="text" id="intime" th:value="${docact.intime}" name="intime" required readonly><br><br><br><br>
+      <label for="outtime">Doctor Out Status:</label>
+      <input type="text" id="outtime" th:value="${docact.outtime}" name="outtime" required readonly><br><br>
+    </p>
+  </th:block>
+  <!--<input type="submit" value="Submit">-->
+ </fieldset>
+</form>
+
+</body>
+</html>

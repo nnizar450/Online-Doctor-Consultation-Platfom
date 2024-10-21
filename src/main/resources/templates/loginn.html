@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+	
+	        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #3498db, #e74c3c, #9b59b6);
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            max-width: 300px;
+            text-align: center;
+            position: relative;
+        }
+
+        .form-container:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        input ,select{
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            transition: background-color 0.3s, border 0.3s;
+        }
+
+        input:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        input:focus {
+            outline: none;
+            border: 2px solid #3498db;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+        }
+
+        .password-icon:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+            border: none;
+            background: #3498db;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .form-title {
+            font-size: 24px;
+        }
+
+        .message {
+            color: red;
+            margin-top: 10px;
+        }
+
+        .success {
+            color: #27ae60;
+        }
+        select{
+			
+			
+			color:black;
+		}
+</style>
+
+</head>
+<body>
+    <div class="form-container">
+        <h2 class="form-title">Login</h2>
+        <form id="login-form" action="login" method="post">
+            <input type="text" id="login-username" name="email" placeholder="Email" required>
+            <div class="password-container">
+                <input type="password" id="login-password" name="password" placeholder="Password" required>
+                <i class="fas fa-eye password-icon" id="password-toggle"></i>
+            </div>
+        <!--    <select name="hospitaltype">
+								<option hidden value="">Choose Hospital</option>
+								<option value="ace">ACE</option>
+								<option value="apollo">Apollo</option>
+								<option value="alan">Alan Clinic</option>   
+								
+								
+							</select>-->
+            <button  type="submit" >Login</button>
+        </form>
+        <p>               <a href="registration.html"></a>         </p>
+        <p id="message" class="message"></p>
+    </div>
+    
+   <script>
+	           const passwordInput = document.getElementById("login-password");
+        const passwordToggle = document.getElementById("password-toggle");
+
+        passwordToggle.addEventListener("click", () => {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordToggle.classList.remove("fa-eye");
+                passwordToggle.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                passwordToggle.classList.remove("fa-eye-slash");
+                passwordToggle.classList.add("fa-eye");
+            }
+        });
+
+        document.getElementById("login-button").addEventListener("click", function (event) {
+            event.preventDefault();
+            const username = document.getElementById("login-username").value;
+            const password = document.getElementById("login-password").value;
+
+            if ((username=="hospital@gmail.com") && (password=="hospital")) {
+                // Replace this with your login logic
+                // For this example, we'll simply show a success message
+                document.getElementById("message").innerText = "Login successful!";
+                document.getElementById("message").classList.add("success");
+            } else {
+                document.getElementById("message").innerText = "Please fill in all fields.";
+                document.getElementById("message").classList.remove("success");
+            }
+        });
+   </script>
+</body>
+</html>

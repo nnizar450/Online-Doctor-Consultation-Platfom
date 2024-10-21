@@ -1,0 +1,116 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>
+		docappintment
+	</title>
+
+</head>
+
+<body>
+
+
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="style" sheet="https://fonts.googleapis.com/css?family=Roboto+Mono">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.3.1.js">
+	</script>
+	<div class="container">
+		<h1>Appointment Button</h1>
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Book Your
+			Appointment</button>
+
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Book an Appointment</h4>
+					</div>
+
+					<div class="modal-body">
+						<form id="uappointment" name="uappointment" method="post" th:action=@{/uappointment}
+							encType="multipart/form-data">
+							<label for="fName">First Name</label>
+							<input type="text" class="form-control" id="fName" name="fname" required><br>
+							<label for="lName">Last Name</label>
+							<input type="text" class="form-control" name="lname" id="lName"><br>
+
+
+							<label for="emailId">Email Id</label>
+							<input type="email" class="form-control" th:value="${session.uemail}" name="email"
+								id="emailId"><br>
+
+							<label for="mobileNo">Mobile No.</label>
+							<input type="text" class="form-control" id="mobileNo" name="mobile" required><br>
+							<label for="Country">Docter Type</label>
+							<select class="form-control custom-select browser-default" name="doctertype">
+								<option hidden>Select the Docter</option>
+								<option value="Gopinath">Gopinath/10:30am - 06:30pm/ General Practioner</option>
+								<option value="Adithya">Adithya/01:00pm - 06:30pm/ Surgeon</option>
+								<option value="Sathya">Sathya/11:00am - 02:30pm/ Neurologist</option>
+								<option value="Sasikumar">Sasikumar/05:00am - 02:30pm/ Dermotologist</option>
+								<option value="Mohamad">Mohamed Sadiq/08:00am - 04:30pm/ Psychiatrist</option>
+								<option value="Suresh">Suresh/06:00am - 01:30pm/ Pediatrican</option>
+								<option value="Rajan">Rajan/06:00am - 01:30pm / Cardiologist</option>
+
+								>
+							</select><br>
+						<!--	<select class="form-control custom-select browser-default" name="hospitalname">
+								<option hidden>Select Hospital</option>
+								<option value="ace">ACE</option>
+								<option value="alan">AlanClinic</option>
+								<option value="apollo">Apollo</option>							
+							</select><br>-->
+							<label for="datetimepicker11">Date</label>
+							<div class="container">
+								<div class="col-sm-6 col-md-6">
+									<div class="form-group">
+										<div class='input-group date'>
+											<input type='date' class="form-control" name="date" />
+											</span>
+										</div>
+									</div>
+								</div>
+								<script type="text/javascript">
+									$(function () {
+										$('#datetimepicker11').datetimepicker({
+											daysOfWeekDisabled: []
+										});
+									});
+								</script>
+							</div><br>
+
+							<div class="form-group">
+								<label for="comment">Reason for the Appointment</label>
+								<textarea class="form-control" rows="5" name="description" id="comment"></textarea>
+							</div>
+							<label for="hospitalName">Previous Health Report</label>
+							<input type="file" class="form-control" id="hospitalName" name="files"
+								placeholder="Enter health record"><br>
+
+
+							<button type="submit" id="submit" class="btn btn-info">Get an Appointment</button>
+						</form>
+
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<html>
+
+<head>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+	<style>
+		body {
+			padding: 20px;
+		}
+
+		table {
+			text-align: center;
+		}
+
+		.cancelled {
+			color: red;
+			font-weight: bold;
+		}
+
+		@media (max-width: 575px) {
+
+			table thead {
+				display: none;
+			}
+
+			table tr {
+				display: flex;
+				flex-direction: column;
+				border: 3px solid white;
+				padding: 1px;
+			}
+
+
+			table td[data-label] {
+				display: flex;
+				font-weight: bold;
+			}
+
+			table td[data-label]::before {
+				content: attr(data-label);
+				color: lightgrey;
+				font-weight: 100;
+				width: 50%;
+			}
+
+
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+		<h2 class="text-center pb-2 mb-2">Appointment Status</h2>
+		<div class="table-responsive">
+			<table class="table table-dark table-hover">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Mobile</th>
+						<th>Doctype</th>
+						<th>Date</th>
+						<th>status</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr th:each="comappoint:${usercom}"   th:if="${comappoint.status=='Appointed'}"  >
+						<td data-label="Flight No." th:text="${comappoint.fname}"></td>
+						<td data-label="Destination" th:text="${comappoint.email}"></td>
+						<td data-label="Time" th:text="${comappoint.mobile}"></td>
+						<td data-label="Gate" th:text="${comappoint.doctertype}"></td>
+						<td data-label="Status" th:text="${comappoint.date}"></td>
+						<td data-label="Status"	class="cancelled" th:text="${comappoint.status}"></td>
+					</tr>
+				
+				
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</body>
+
+</html>
